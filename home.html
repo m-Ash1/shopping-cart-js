@@ -1,0 +1,68 @@
+<!-- home.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="bg-gray-100">
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+        if (!loggedInUser) {
+          window.location.href = "login.html";
+        }
+      });
+    </script>
+
+    <header class="bg-gray-800 p-4 text-white flex justify-between">
+      <h1 class="text-2xl">My Shop</h1>
+      <div class="flex gap-6 items-center">
+        <div class="relative">
+          <a href="cart.html" class="text-white text-xl">
+            <i class="fa-solid fa-cart-shopping"></i>
+          </a>
+          <span
+            id="cartCounter"
+            class="absolute top-0 right-0 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm"
+            >0</span
+          >
+        </div>
+
+        <button
+          id="logoutBtn"
+          class="bg-red-500 text-white p-2 rounded"
+          onclick="logout()"
+        >
+          Logout
+        </button>
+      </div>
+    </header>
+
+    <div class="container mx-auto mt-10">
+      <div id="productList" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+    </div>
+    <div
+      id="toast"
+      class="fixed bottom-4 right-4 bg-green-500 text-white p-4 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 ease-in-out"
+    >
+      Product added to cart!
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

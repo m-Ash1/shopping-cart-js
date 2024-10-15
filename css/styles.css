@@ -1,0 +1,8 @@
+.transition-opacity {
+  transition: opacity 0.3s ease-in-out;
+}
+
+#cartCounter {
+  right: -15px;
+  top: -5px;
+}
